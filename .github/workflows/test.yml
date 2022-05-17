@@ -25,6 +25,14 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        # 将GTIHUB的信息都打印出来，后面的脚本可以使用这些信息，例如后面的镜像TAG用的就是这里面的commitid
+        run: |
+          echo "Hello ${{ github.event.commits[0].id }}"
+          echo '${{ toJSON(github) }}'
+
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: ls
