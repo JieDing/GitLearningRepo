@@ -31,7 +31,7 @@ jobs:
         # 将GTIHUB的信息都打印出来，后面的脚本可以使用这些信息，例如后面的镜像TAG用的就是这里面的commitid
         run: |
           git status
-          echo "Hello ${{ toJSON(join(github.event.commits)) }}"
+          echo "Hello ${{ toJSON(github.event.commits) }}"
           echo '${{ toJSON(github) }}'
 
       # Runs a single command using the runners shell
